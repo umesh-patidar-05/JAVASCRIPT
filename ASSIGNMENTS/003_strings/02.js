@@ -17,4 +17,11 @@
 
 
 
-
+let ename = "ajay singh thakur"
+res = ""
+for( let i=0; i < ename.length; i++){
+    if( i==0 || ename[i-1] == " "){
+        res = res + ename[i].toUpperCase()
+    }
+}
+console.log("Employee Short ID:", res)
