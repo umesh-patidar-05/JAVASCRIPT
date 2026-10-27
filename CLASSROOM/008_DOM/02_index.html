@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 class="course">Java</h2>
+    <h2 class="course">Python</h2>
+    <h2 class="course">React</h2>
+    <h2 class="course">Angular</h2>
+
+    <script>
+        let clist = document.querySelectorAll(".course")
+        console.log(clist)    // NodeList(4) [h2.course, h2.course, h2.course, h2.course]
+        console.log(clist[0].textContent)  // Java
+
+
+
+        let elements = document.querySelectorAll(".course")
+        elements.forEach(function(e){
+            console.log(e.textContent)  // Java
+                                        // Python
+                                        // React
+                                        // Angular
+            e.style.color="blue"
+            e.style.fontSize="60px"
+            e.style.backgroundColor="yellow"                            
+
+
+        })
+
+
+
+        let elementss = document.querySelectorAll(".course")
+        for(let i=0; i < elements.length; i++){
+            console.log(elements[i].textContent)  // Java
+                                                  // Python
+                                                  // React
+                                                  // Angular
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="c1">
+        Hello
+        <b>Java Script</b>
+        <span>Students</span>
+    </div>
+
+    <script>
+        let m = document.getElementById("c1")
+        console.log(m.innerText)  // Hello Java Script Students
+        
+        console.log(m.textContent)  //         Hello
+                                    //         Java Script
+                                    //         Students
+    </script>
+</body>
+</html>

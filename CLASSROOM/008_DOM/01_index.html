@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <p>First para</p>
+        <p>Second para</p>
+    </div>
+
+    <script>
+        let container = document.querySelector("#container")
+        let p = container.querySelector("p")
+        console.log(p.textContent)  // First para
+
+        let p1 = container.querySelector("h1")
+        console.log(p1.textContent)   // 01_index.html:20 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
+                                      // at 01_index.html:20:24
+    </script>
+
+</body>
+
+</html>
