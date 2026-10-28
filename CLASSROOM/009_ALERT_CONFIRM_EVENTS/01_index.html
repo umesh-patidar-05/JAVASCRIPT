@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        visible text
+        <span style="display: none;">hidden text</span>
+    </div>
+    <script>
+        let m = document.getElementById("box")
+        console.log(m.innerText)  // visible text
+
+        console.log(m.textContent)  // visible text
+                                   // hidden text
+
+        console.log(m.innerHTML)  // visible text
+        // <span style="display: none;">hidden text</span>
+
+    
+    </script>
+</body>
+</html>

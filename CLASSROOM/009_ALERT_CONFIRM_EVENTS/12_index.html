@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1">
+        Heyyyy guyssssssssssssss
+    </div>
+
+    <script>
+        let b1 = document.getElementById("d1")
+        b1.addEventListener("mouseenter", function(){
+            b1.style.backgroundColor="orange"
+            b1.textContent = "Seee magic here"
+        })
+
+        b1.addEventListener("mouseleave", function(){
+            b1.style.backgroundColor="pink"
+            b1.textContent = "Hover over here"
+        })
+
+        b1.addEventListener("dblclick", function(){
+            b1.style.backgroundColor="green"
+            b1.textContent = "Unlocked the box"
+        })
+    </script>
+</body>
+</html>
