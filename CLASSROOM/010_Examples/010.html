@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <input type="text" id="name" placeholder="Enter Name">
+        <button id="btn">Click here</button>
+    </div>
+    <script>
+        let b = document.getElementById("box")
+        let btn = document.getElementById("btn")
+        let name = document.getElementById("name")
+
+        b.addEventListener("click", function(e){
+            console.log("Type is ", e.type)
+            console.log("Target is ", e.target)
+            console.log("current target ", e.currentTarget)
+            
+        })
+
+        name.addEventListener("keydown", function(e){
+            console.log("key is ", e.key)
+            console.log("code ", e.code)
+        })
+    </script>
+</body>
+</html>
