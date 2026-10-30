@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label>Enter name in lower case</label>
+        <input type="text" id="fname" placeholder="Enter first name" onblur="uppercase()">
+
+        <label>Enter last name in upper case</label>
+        <input type="text" id="lname" placeholder="Enter last name" onblur="lowercase()">
+    </form>
+
+        <script>
+            function uppercase(){
+                let x = document.getElementById("fname")
+                x.value = x.value.toUpperCase()
+            }
+
+
+            function lowercase(){
+                let x = document.getElementById("lname")
+                x.value = x.value.toLowerCase()
+            }
+        </script>
+</body>
+</html>
