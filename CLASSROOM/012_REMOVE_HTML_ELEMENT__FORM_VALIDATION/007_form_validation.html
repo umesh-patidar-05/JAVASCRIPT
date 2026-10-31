@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Registration Form</h2>
+    <form id="myform" action="hello.html">
+        UserName: <input type="text" name="" id="username" autofocus>
+        <span id="error"></span>
+        <br><br>
+        <p id="message"></p>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        let form = document.getElementById("myform")
+        let username = document.getElementById("username")
+        let error = document.getElementById("error")
+        let message = document.getElementById("message")
+
+        function validateusername(){
+            let name = username.value.trim()
+
+            if(name == ""){
+                error.textContent = "Username is required"
+                return false
+            }
+            else if(name.length < 3){
+                error.textContent = "user name must contain at least 3 character"
+                return false
+            }
+            else{
+                error.textContent = ""
+                return true
+            }
+        }
+
+        form.addEventListener("input", function(event){
+            validateusername()
+        })
+
+        form.addEventListener("submit", function(event){
+            
+            let isvalid = validateusername()
+            if(isvalid){
+                message.textContent = "Form Submitted successfully"
+            }
+            else{
+                event.preventDefault()
+                message.textContent = ""
+            }
+
+            
+        })
+    </script>
+</body>
+
+</html>
