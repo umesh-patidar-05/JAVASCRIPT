@@ -1,0 +1,204 @@
+Assignment 01: Age Calculator
+
+Technology: HTML, CSS, JavaScript (DOM)
+
+Problem Statement:
+
+Create an Age Calculator application using HTML, CSS, and JavaScript.
+
+Requirements:
+
+Accept Date of Birth using a date input field.
+
+Add a Calculate Age button.
+
+Calculate and display age in Years, Months, and Days.
+
+Display the result dynamically without reloading the page.
+
+Validate empty input and future dates.
+
+Design a simple and user-friendly interface.
+
+
+
+
+
+
+
+
+
+
+QNO 2:
+===========
+Password Show/Hide
+Create a password field with a button to toggle password visibility.
+
+
+
+
+
+
+
+
+
+
+QNO 3:--
+Background Color Changer
+Create a webpage with buttons to change the background color dynamically using JavaScript DOM.
+
+
+
+
+
+
+
+
+
+QNO 4:--
+Text Changer Application
+
+Problem Statement:
+
+Create a webpage that allows users to change the content of a paragraph dynamically using JavaScript DOM.
+
+Requirements:
+
+Display a heading and a paragraph with some default text.
+
+Create three buttons:
+
+Change Text
+
+Uppercase
+
+Reset Text
+
+On clicking Change Text, replace the paragraph with new text.
+
+On clicking Uppercase, convert the paragraph text into uppercase.
+
+On clicking Reset Text, restore the original paragraph content.
+
+
+
+
+
+
+
+
+
+
+Q5. Font Size Controller
+
+Problem Statement:
+
+Create a webpage that allows users to increase or decrease the font size of a paragraph dynamically.
+
+Requirements:
+
+Display a heading and a paragraph with some default content.
+
+Create three buttons:
+
+Increase Font Size
+
+Decrease Font Size
+
+Reset Font Size
+
+On clicking Increase, increase the paragraph font size by 2px.
+
+On clicking Decrease, decrease the paragraph font size by 2px.
+
+On clicking Reset, restore the original font size.
+
+Font size should not decrease below 10px or increase beyond 40px.
+
+
+
+
+
+
+
+
+
+
+Q6. Image Changer Application
+
+Problem Statement:
+
+Create a webpage that allows users to change displayed images dynamically using JavaScript DOM.
+
+Requirements:
+
+Display a heading and a default image on the webpage.
+
+Create three buttons:
+
+Show Image 1
+
+Show Image 2
+
+Show Image 3
+
+On clicking each button, display the corresponding image.
+
+Add an additional Next Image button to switch between images.
+
+Display the image name below the image.
+
+Set an appropriate width and height for all images.
+
+
+
+
+
+
+
+
+
+
+QNO 7:-
+=============
+Dynamic List Manager
+
+Create a webpage that allows users to dynamically add and remove items from an unordered list.
+
+Requirements:
+
+Create a text input to accept an item name.
+
+Add an Add Item button.
+
+Add the entered item to an unordered list dynamically.  
+
+Add a Delete button against every list item.
+
+Display an appropriate message if the input is empty.
+
+Add a Clear All button to remove all list items.
+
+
+
+
+
+
+
+
+
+QNO 8:--
+============
+Calculator Application
+Problem Statement:
+
+Create a calculator application using HTML, CSS, and JavaScript DOM.
+
+Requirements:
+1. Create a calculator display screen.
+2. Provide buttons for numbers 0–9.
+3. Create buttons for Addition (+), Subtraction (-), Multiplication (*), and Division (/).
+4. Add an Equals (=) button to calculate the result.
+5. Add a Clear (AC) button to clear the display.
+6. Display the entered numbers and calculated result dynamically.
+7.
