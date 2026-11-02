@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input:not([type="radio"]):not([type="file"]) {
+            width: 100%;
+            padding: 10px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+        }
+
+        .gender-options label {
+            display: inline-block;
+            margin-right: 12px;
+            font-weight: normal;
+        }
+
+        .error {
+            display: block;
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1677d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #message {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form id="myform" novalidate>
+
+        <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" autofocus>
+            <span class="error" id="usernameerror"></span>
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password">
+            <span class="error" id="passworderror"></span>
+        </div>
+
+        <div class="field">
+            <label for="repassword">Re-enter Password</label>
+            <input type="password" id="repassword">
+            <span class="error" id="repassworderror"></span>
+        </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="text" id="email">
+            <span class="error" id="emailerror"></span>
+        </div>
+
+        <div class="field">
+            <label>Gender</label>
+            <div class="gender-options">
+                <label>
+                    <input type="radio" name="gender" value="Male"> Male
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="Female"> Female
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="Other"> Other
+                </label>
+            </div>
+            <span class="error" id="gendererror"></span>
+        </div>
+
+        <div class="field">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob">
+            <span class="error" id="doberror"></span>
+        </div>
+
+        <div class="field">
+            <label for="mobile">Mobile Number</label>
+            <input type="text" id="mobile" inputmode="numeric" maxlength="10">
+            <span class="error" id="mobileerror"></span>
+        </div>
+
+        <div class="field">
+            <label for="file">Upload File (PDF, JPG, PNG)</label>
+            <input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png">
+            <span class="error" id="fileerror"></span>
+        </div>
+
+        <button type="submit">Register</button>
+
+        <p id="message" aria-live="polite"></p>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById("myform");
+
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+    const repassword = document.getElementById("repassword");
+    const email = document.getElementById("email");
+    const gender = document.getElementsByName("gender");
+    const dob = document.getElementById("dob");
+    const mobile = document.getElementById("mobile");
+    const file = document.getElementById("file");
+    const message = document.getElementById("message");
+
+    // 1. Username validation
+    function validateusername() {
+        const name = username.value.trim();
+        const error = document.getElementById("usernameerror");
+
+        if (name === "") {
+            error.textContent = "Username is required";
+            return false;
+        } else if (name.length < 3) {
+            error.textContent = "Username must contain at least 3 characters";
+            return false;
+        } else {
+            error.textContent = "";
+            return true;
+        }
+    }
+
+    // 2. Password validation
+    function validatepassword() {
+        const pass = password.value;
+        const error = document.getElementById("passworderror");
+
+        let hasuppercase = false;
+        let haslowercase = false;
+        let hasdigit = false;
+        let special = false;
+
+        if (pass.length < 8 || pass.length > 15) {
+            error.textContent = "Password must contain 8 to 15 characters";
+            return false;
+        }
+
+        if (/\s/.test(pass)) {
+            error.textContent = "Password must not contain spaces";
+            return false;
+        }
+
+        for (let i = 0; i < pass.length; i++) {
+            const ch = pass[i];
+
+            if (ch >= "A" && ch <= "Z") {
+                hasuppercase = true;
+            } else if (ch >= "a" && ch <= "z") {
+                haslowercase = true;
+            } else if (ch >= "0" && ch <= "9") {
+                hasdigit = true;
+            } else {
+                special = true;
+            }
+        }
+
+        if (!hasuppercase) {
+            error.textContent = "At least one uppercase letter is required";
+            return false;
+        }
+
+        if (!haslowercase) {
+            error.textContent = "At least one lowercase letter is required";
+            return false;
+        }
+
+        if (!hasdigit) {
+            error.textContent = "At least one digit is required";
+            return false;
+        }
+
+        if (!special) {
+            error.textContent = "At least one special character is required";
+            return false;
+        }
+
+        error.textContent = "";
+        return true;
+    }
+
+    // 3. Confirm password validation
+    function validaterepassword() {
+        const error = document.getElementById("repassworderror");
+
+        if (repassword.value === "") {
+            error.textContent = "Please re-enter your password";
+            return false;
+        } else if (password.value !== repassword.value) {
+            error.textContent = "Passwords do not match";
+            return false;
+        } else {
+            error.textContent = "";
+            return true;
+        }
+    }
+
+    // 4. Email validation
+    function validateemail() {
+        const value = email.value.trim();
+        const error = document.getElementById("emailerror");
+
+        const emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (value === "") {
+            error.textContent = "Email is required";
+            return false;
+        } else if (!emailpattern.test(value)) {
+            error.textContent = "Please enter a valid email address";
+            return false;
+        } else {
+            error.textContent = "";
+            return true;
+        }
+    }
+
+    // 5. Gender validation
+    function validategender() {
+        const error = document.getElementById("gendererror");
+        let selected = false;
+
+        for (let i = 0; i < gender.length; i++) {
+            if (gender[i].checked) {
+                selected = true;
+                break;
+            }
+        }
+
+        if (!selected) {
+            error.textContent = "Please select your gender";
+            return false;
+        }
+
+        error.textContent = "";
+        return true;
+    }
+
+    // 6. Date of birth validation
+    function validatedob() {
+        const value = dob.value;
+        const error = document.getElementById("doberror");
+
+        if (value === "") {
+            error.textContent = "Date of birth is required";
+            return false;
+        }
+
+        // ISO date strings (YYYY-MM-DD) can be compared directly.
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+        const todayString = `${year}-${month}-${day}`;
+
+        if (value > todayString) {
+            error.textContent = "Future date is not allowed";
+            return false;
+        }
+
+        error.textContent = "";
+        return true;
+    }
+
+    // 7. Mobile number validation
+    function validatemobile() {
+        const value = mobile.value.trim();
+        const error = document.getElementById("mobileerror");
+
+        if (value === "") {
+            error.textContent = "Mobile number is required";
+            return false;
+        } else if (!/^\d{10}$/.test(value)) {
+            error.textContent = "Mobile number must contain exactly 10 digits";
+            return false;
+        } else {
+            error.textContent = "";
+            return true;
+        }
+    }
+
+    // 8. File upload validation
+    function validatefile() {
+        const error = document.getElementById("fileerror");
+        const selectedFile = file.files[0];
+
+        if (!selectedFile) {
+            error.textContent = "Please select a file";
+            return false;
+        }
+
+        const allowedTypes = [
+            "application/pdf",
+            "image/jpeg",
+            "image/png"
+        ];
+
+        const allowedExtensions = /\.(pdf|jpe?g|png)$/i;
+
+        if (
+            !allowedTypes.includes(selectedFile.type) ||
+            !allowedExtensions.test(selectedFile.name)
+        ) {
+            error.textContent = "Only PDF, JPG, and PNG files are allowed";
+            return false;
+        }
+
+        const maxSize = 2 * 1024 * 1024; // 2 MB
+
+        if (selectedFile.size > maxSize) {
+            error.textContent = "File size must not exceed 2 MB";
+            return false;
+        }
+
+        error.textContent = "";
+        return true;
+    }
+
+    // Validate fields while typing or changing values
+    username.addEventListener("input", validateusername);
+    password.addEventListener("input", function () {
+        validatepassword();
+
+        if (repassword.value !== "") {
+            validaterepassword();
+        }
+    });
+
+    repassword.addEventListener("input", validaterepassword);
+    email.addEventListener("input", validateemail);
+    mobile.addEventListener("input", validatemobile);
+    dob.addEventListener("change", validatedob);
+    file.addEventListener("change", validatefile);
+
+    gender.forEach(function (radio) {
+        radio.addEventListener("change", validategender);
+    });
+
+    // Validate every field when submitting
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const isvalid =
+            validateusername() &&
+            validatepassword() &&
+            validaterepassword() &&
+            validateemail() &&
+            validategender() &&
+            validatedob() &&
+            validatemobile() &&
+            validatefile();
+
+        if (isvalid) {
+            message.textContent = "Registration form validated successfully!";
+            message.className = "success";
+        } else {
+            message.textContent = "Please correct the errors above.";
+            message.className = "";
+        }
+    });
+</script>
+
+</body>
+</html>
