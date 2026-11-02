@@ -1,0 +1,133 @@
+<!-- QNO 7:-
+=============
+Dynamic List Manager
+
+Create a webpage that allows users to dynamically add and remove items from an unordered list.
+
+Requirements:
+
+Create a text input to accept an item name.
+
+Add an Add Item button.
+
+Add the entered item to an unordered list dynamically.  
+
+Add a Delete button against every list item.
+
+Display an appropriate message if the input is empty.
+
+Add a Clear All button to remove all list items. -->
+
+
+
+
+
+
+
+
+
+
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List Manager</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        input {
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        #error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dynamic List Manager</h1>
+
+    <input type="text" id="itemInput" placeholder="Enter item name">
+    <button id="add">Add Item</button>
+
+    <p id="error"></p>
+
+    <ul id="itemList"></ul>
+
+    <button id="clear">Clear All</button>
+
+    <script>
+        let itemInput = document.getElementById("itemInput");
+        let add = document.getElementById("add");
+        let itemList = document.getElementById("itemList");
+        let error = document.getElementById("error");
+        let clear = document.getElementById("clear");
+
+        // Add Item
+        add.addEventListener("click", function () {
+            let itemName = itemInput.value.trim();
+
+            if (itemName === "") {
+                error.textContent = "Please enter an item name.";
+                return;
+            }
+
+            error.textContent = "";
+
+            // Create a new list item
+            let li = document.createElement("li");
+
+            // Add the item name
+            li.textContent = itemName + " ";
+
+            // Create Delete button
+            let deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+
+            // Delete individual item
+            deleteBtn.addEventListener("click", function () {
+                li.remove();
+            });
+
+            // Add Delete button to the list item
+            li.appendChild(deleteBtn);
+
+            // Add list item to the unordered list
+            itemList.appendChild(li);
+
+            // Clear input field
+            itemInput.value = "";
+        });
+
+        // Clear All Items
+        clear.addEventListener("click", function () {
+            itemList.innerHTML = "";
+            error.textContent = "";
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+

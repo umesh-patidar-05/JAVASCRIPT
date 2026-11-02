@@ -1,0 +1,30 @@
+<!-- QNO 3:--
+Background Color Changer
+Create a webpage with buttons to change the background color dynamically using JavaScript DOM. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    Color: 
+    <input type="color" id="color">
+    <br>
+    <button id="btn">Change Color</button>
+    
+    <script>
+        let color = document.getElementById("color")
+        document.getElementById("btn").addEventListener("click", function(){
+
+            b = document.getElementsByTagName("body")[0]
+            b.style.backgroundColor = color.value 
+        })
+    </script>
+</body>
+</html>

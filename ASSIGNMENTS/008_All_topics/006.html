@@ -1,0 +1,107 @@
+<!-- Q6. Image Changer Application
+
+Problem Statement:
+
+Create a webpage that allows users to change displayed images dynamically using JavaScript DOM.
+
+Requirements:
+
+Display a heading and a default image on the webpage.
+
+Create three buttons:
+
+Show Image 1
+
+Show Image 2
+
+Show Image 3
+
+On clicking each button, display the corresponding image.
+
+Add an additional Next Image button to switch between images.
+
+Display the image name below the image.
+
+Set an appropriate width and height for all images. -->
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img {
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Changer Application</h1>
+    <figure>
+        <img src="images/01.jpg" alt="" title="Nature 1" class="img" id="image">
+        <figcaption id="cap">Nature</figcaption>
+    </figure>
+    <button id="btn1">Show Image 1</button>
+    <button id="btn2">Show Image 2</button>
+    <button id="btn3">Show Image 3</button>
+    <br><br>
+    <button id="next">Next Image</button>
+    
+    <script>
+        let image = document.getElementById("image")
+        let cap = document.getElementById("cap")
+        let btn1 = document.getElementById("btn1")
+        let btn2 = document.getElementById("btn2")
+        let btn3 = document.getElementById("btn3")
+        let next = document.getElementById("next")
+
+        btn1.addEventListener("click", function(){
+            image.src = "images/02.jpg"
+            cap.textContent = "Nature 01"
+        })
+
+        btn2.addEventListener("click", function(){
+            image.src = "images/03.jpg"
+            cap.textContent = "Nature 02"
+        })
+
+        btn3.addEventListener("click", function(){
+            image.src = "images/04.jpg"
+            cap.textContent = "Nature 03"
+        })
+
+        next.addEventListener("click", function(){
+            if( image.getAttribute("src") === "images/01.jpg"){
+                image.src = "images/02.jpg"
+                cap.textContent = "Nature 01"
+            }
+            else if (image.getAttribute("src") === "images/02.jpg"){
+                image.src = "images/03.jpg"
+                cap.textContent = "Nature 02"
+            }
+
+            else if (image.getAttribute("src") === "images/03.jpg"){
+                image.src = "images/04.jpg"
+                cap.textContent = "Nature 03"
+            }
+
+            else if (image.getAttribute("src") === "images/04.jpg"){
+                image.src = "images/01.jpg"
+                cap.textContent = "Nature"
+            }
+        })
+
+
+    </script>
+
+</body>
+</html>

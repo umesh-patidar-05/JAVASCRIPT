@@ -1,0 +1,74 @@
+<!-- Q5. Font Size Controller
+
+Problem Statement:
+
+Create a webpage that allows users to increase or decrease the font size of a paragraph dynamically.
+
+Requirements:
+
+Display a heading and a paragraph with some default content.
+
+Create three buttons:
+
+Increase Font Size
+
+Decrease Font Size
+
+Reset Font Size
+
+On clicking Increase, increase the paragraph font size by 2px.
+
+On clicking Decrease, decrease the paragraph font size by 2px.
+
+On clicking Reset, restore the original font size.
+
+Font size should not decrease below 10px or increase beyond 40px. -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="big">Font Size Controller</h1>
+    <p id="small" style="font-size: 25px;">Hii i am Developer</p>
+    <button id="increase">Increase Font</button>
+    <button id="decrease">Decrease Font</button>
+    <button id="reset">Reset Font</button>
+
+    <script>
+        let small = document.getElementById("small")
+        let increase = document.getElementById("increase")
+        let decrease = document.getElementById("decrease")
+        let reset = document.getElementById("reset")
+        let n = 25
+        increase.addEventListener("click", function(){
+            if (n < 40){
+                n = n+2
+                small.style.fontSize = n+"px"
+            }
+        })
+
+        decrease.addEventListener("click", function(){
+            if (n > 10){
+                n = n-2
+                small.style.fontSize = n + "px"
+            }
+        })
+
+        reset.addEventListener("click", function(){
+            n = 25
+            small.style.fontSize = n + "px"
+        })
+        
+
+
+    </script>
+
+</body>
+</html>

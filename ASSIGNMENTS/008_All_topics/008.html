@@ -1,0 +1,272 @@
+<!-- QNO 8:--
+============
+Calculator Application
+Problem Statement:
+
+Create a calculator application using HTML, CSS, and JavaScript DOM.
+
+Requirements:
+1. Create a calculator display screen.
+2. Provide buttons for numbers 0–9.
+3. Create buttons for Addition (+), Subtraction (-), Multiplication (*), and Division (/).
+4. Add an Equals (=) button to calculate the result.
+5. Add a Clear (AC) button to clear the display.
+6. Display the entered numbers and calculated result dynamically.
+7. -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 280px;
+            background: gray;
+            margin: 50px auto;
+            border: 10px solid grey;
+            box-shadow: 3px 4px 4px 1px black;
+            padding: 5px;
+        }
+
+        .display {
+            background: white;
+            height: 60px;
+            border: 2px solid black;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 8px;
+            overflow: hidden;
+        }
+
+        .display h1 {
+            font-size: 28px;
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .digit {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+
+        button {
+            height: 50px;
+            width: 100%;
+            background: rgb(34, 195, 195);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        button:active {
+            background-color: #168f9f;
+        }
+
+        .operator {
+            background: #2878b5;
+        }
+
+        .clear {
+            background: #d9534f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="display">
+            <h1 id="display">0</h1>
+        </div>
+
+        <div class="digit">
+            <button class="clear" data-action="clear">C</button>
+            <button data-action="percent">%</button>
+            <button data-action="backspace">⌫</button>
+            <button class="operator" data-operator="/">÷</button>
+
+            <button data-number="7">7</button>
+            <button data-number="8">8</button>
+            <button data-number="9">9</button>
+            <button class="operator" data-operator="*">×</button>
+
+            <button data-number="4">4</button>
+            <button data-number="5">5</button>
+            <button data-number="6">6</button>
+            <button class="operator" data-operator="-">−</button>
+
+            <button data-number="1">1</button>
+            <button data-number="2">2</button>
+            <button data-number="3">3</button>
+            <button class="operator" data-operator="+">+</button>
+
+            <button data-number="00">00</button>
+            <button data-number="0">0</button>
+            <button data-action="decimal">.</button>
+            <button class="operator" data-action="equals">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.querySelector("#display");
+        const buttons = document.querySelectorAll("button");
+
+        let currentInput = "0";
+        let previousInput = null;
+        let operator = null;
+        let shouldResetDisplay = false;
+
+        function updateDisplay() {
+            display.textContent = currentInput;
+        }
+
+        function inputNumber(number) {
+            if (currentInput === "Error" || shouldResetDisplay) {
+                currentInput = number === "00" ? "0" : number;
+                shouldResetDisplay = false;
+            } else if (currentInput === "0") {
+                currentInput = number === "00" ? "0" : number;
+            } else {
+                currentInput += number;
+            }
+
+            updateDisplay();
+        }
+
+        function inputDecimal() {
+            if (currentInput === "Error" || shouldResetDisplay) {
+                currentInput = "0.";
+                shouldResetDisplay = false;
+            } else if (!currentInput.includes(".")) {
+                currentInput += ".";
+            }
+
+            updateDisplay();
+        }
+
+        function chooseOperator(nextOperator) {
+            if (currentInput === "Error") return;
+
+            if (operator && !shouldResetDisplay) {
+                calculate();
+            }
+
+            previousInput = currentInput;
+            operator = nextOperator;
+            shouldResetDisplay = true;
+        }
+
+        function calculate() {
+            if (operator === null || previousInput === null) return;
+
+            const first = Number(previousInput);
+            const second = Number(currentInput);
+            let result;
+
+            switch (operator) {
+                case "+":
+                    result = first + second;
+                    break;
+                case "-":
+                    result = first - second;
+                    break;
+                case "*":
+                    result = first * second;
+                    break;
+                case "/":
+                    if (second === 0) {
+                        currentInput = "Error";
+                        previousInput = null;
+                        operator = null;
+                        shouldResetDisplay = true;
+                        updateDisplay();
+                        return;
+                    }
+                    result = first / second;
+                    break;
+            }
+
+            if (!Number.isFinite(result)) {
+                currentInput = "Error";
+            } else {
+                currentInput = String(Number(result.toPrecision(12)));
+            }
+
+            previousInput = null;
+            operator = null;
+            shouldResetDisplay = true;
+            updateDisplay();
+        }
+
+        function clearCalculator() {
+            currentInput = "0";
+            previousInput = null;
+            operator = null;
+            shouldResetDisplay = false;
+            updateDisplay();
+        }
+
+        function backspace() {
+            if (currentInput === "Error" || shouldResetDisplay) {
+                currentInput = "0";
+                shouldResetDisplay = false;
+            } else {
+                currentInput = currentInput.slice(0, -1) || "0";
+            }
+
+            updateDisplay();
+        }
+
+        function percentage() {
+            if (currentInput === "Error") return;
+
+            currentInput = String(Number(currentInput) / 100);
+            updateDisplay();
+        }
+
+        buttons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                if (button.dataset.number !== undefined) {
+                    inputNumber(button.dataset.number);
+                } else if (button.dataset.operator) {
+                    chooseOperator(button.dataset.operator);
+                } else {
+                    switch (button.dataset.action) {
+                        case "clear":
+                            clearCalculator();
+                            break;
+                        case "decimal":
+                            inputDecimal();
+                            break;
+                        case "backspace":
+                            backspace();
+                            break;
+                        case "percent":
+                            percentage();
+                            break;
+                        case "equals":
+                            calculate();
+                            break;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

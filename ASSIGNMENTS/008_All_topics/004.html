@@ -1,0 +1,80 @@
+<!-- QNO 4:--
+Text Changer Application
+
+Problem Statement:
+
+Create a webpage that allows users to change the content of a paragraph dynamically using JavaScript DOM.
+
+Requirements:
+
+Display a heading and a paragraph with some default text.
+
+Create three buttons:
+
+Change Text
+
+Uppercase
+
+Reset Text
+
+On clicking Change Text, replace the paragraph with new text.
+
+On clicking Uppercase, convert the paragraph text into uppercase.
+
+On clicking Reset Text, restore the original paragraph content. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Text Changer Application</h1>
+    <p id="para">Hii I am developer</p>
+    <p id="error" style="color: red;"></p>
+    <br>
+    <button id="change">Change Text</button>
+    <button id="upper">Uppercase</button>
+    <button id="reset">Reset Text</button>
+
+    <script>
+        let para = document.getElementById("para")
+        let change = document.getElementById("change")
+        let upper = document.getElementById("upper")
+        let reset = document.getElementById("reset")
+        let error = document.getElementById("error")
+        let defaultt = para.innerText
+
+        change.addEventListener("click", function () {
+            let newpara = prompt("Enter new Text")
+            if (newpara.trim() === "") {
+                para.innerText = ""
+                error.innerText = "plz enter something (empty input field not allowed)"
+            }
+            else {
+                para.innerText = newpara
+                error.innerText = ""
+            }
+        })
+
+        upper.addEventListener("click", function () {
+            let content = para.innerText
+            para.innerText = content.toUpperCase()
+            error.innerText = ""
+        })
+
+        reset.addEventListener("click", function(){
+            para.innerText = defaultt
+        })
+
+    </script>
+
+</body>
+
+</html>

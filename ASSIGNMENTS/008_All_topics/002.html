@@ -1,0 +1,40 @@
+<!-- QNO 2:
+===========
+Password Show/Hide
+Create a password field with a button to toggle password visibility. -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    password: 
+    <input type="password" name="" id="password">    
+    <br><br>
+    <button id="btn">Show Password</button>
+
+    <script>
+        let password = document.getElementById("password")
+        let btn = document.getElementById("btn")
+        document.getElementById("btn").addEventListener("click", function(){
+
+            if( password.type === "password"){
+                password.type = "text"
+                btn.textContent = "Hide Password"
+            }
+
+            else{
+                password.type = "password"
+                btn.textContent = "Show Password"
+            }
+
+        })
+    </script>
+</body>
+</html>
