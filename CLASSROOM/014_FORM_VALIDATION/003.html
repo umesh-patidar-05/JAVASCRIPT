@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <h3>Date of birth validation</h3>
+
+    <form id="myform" action="hello.html">
+        Date of Birth:
+        <input type="date" name="dob" id="dob">
+        <span id="error" style="color: red;"></span>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        let form = document.getElementById("myform")
+        let dob = document.getElementById("dob")
+        let error = document.getElementById("error")
+
+        function validatedob(){
+            let datvalue = dob.value
+            if(datvalue === ""){
+                error.textContent = "Dob of birth is required"
+                return false
+            }
+            
+            let birthdate = new Date(datvalue)
+            let today = new Date()
+            
+            if(birthdate > today){
+                error.textContent = "future date is not allowed"
+                return false
+            }
+
+            error.textContent = ""
+            return true
+
+        }
+
+        form.addEventListener("submit", function(event){
+            let result = validatedob()
+            if(result == false){
+                event.preventDefault()
+
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

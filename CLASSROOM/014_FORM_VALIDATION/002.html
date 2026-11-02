@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Registration Form</h2>
+    <form id="myform" action="hello.html">
+        UserName: <input type="text" name="" id="username" autofocus>
+        <span id="error"></span>
+        <br><br>
+        password: <input type="password" id="password" name="password">
+        <span id="passworderror"></span>
+        <br>
+        <br>
+        Re-Enter password: <input type="password" id="repassword">
+        <span id="repassworderror"></span>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+        let form = document.getElementById("myform")
+        let username = document.getElementById("username")
+        let error = document.getElementById("error")
+        let message = document.getElementById("message")
+        let password = document.getElementById("password")
+        let passworderror = document.getElementById("passworderror")
+        let repassword = document.getElementById("repassword")
+        let repassworderror = document.getElementById("repassworderror")
+
+        function validateusername(){
+            let name = username.value.trim()
+
+            if(name == ""){
+                error.textContent = "Username is required"
+                return false
+            }
+            else if(name.length < 3){
+                error.textContent = "user name must contain at least 3 character"
+                return false
+            }
+            else{
+                error.textContent = ""
+                return true
+            }
+        }
+
+        function validatepassword(){
+            let pass = password.value
+            let hasuppercase = false
+            let haslowercase = false
+            let hasdigit = false
+            let special = false
+            if(pass.length < 8){
+                passworderror.textContent = "password must contain atleast 8 characters"
+                return false
+            }
+            if(pass.length > 15){
+                passworderror.textContent= "password can not excessed 15 characteres"
+                return false
+            }
+            for(let i=0; i < pass.length; i++){
+                let ch = pass[i]
+                if( ch >= 'A' && ch <= 'Z'){
+                    hasuppercase = true
+                }
+                else if(ch >= 'a' && ch <= 'z'){
+                    haslowercase = true
+                }
+                else if ( ch >= "0" && ch <= '9'){
+                    hasdigit = true
+                }
+                else if( ch != " "){
+                    special = true
+                }
+
+            }
+            if (!hasuppercase){
+                passworderror.textContent = "Atleast one upper case required"
+                return false
+                
+            }
+            if(!haslowercase){
+                passworderror.textContent = "Atleast one lower case required"
+                return false
+            }
+            if(!hasdigit){
+                passworderror.textContent = "Alteast one digit required"
+                return false
+            }
+
+            if(!special){
+                passworderror.textContent = "Atleast one special character is required"
+                return false
+            }
+            passworderror.textContent = ""
+            return true
+
+        }
+
+        function validaterepassword(){
+            let repass = repassword.value
+            let pass = password.value
+            if(repass === ""){
+                repassworderror.textContent = "plz reenter password"
+                return false
+            }
+            else if( pass !== repass){
+                repassworderror.textContent = "password do no match"
+                return false
+            }
+            else{
+                repassworderror.textContent = ""
+                return true
+            }
+
+
+        }
+
+        username.addEventListener("input", function(event){
+            validateusername()
+        })
+
+        password.addEventListener("input", function(){
+            validatepassword()
+        })
+
+        repassword.addEventListener("input", function(){
+            validaterepassword()
+        })
+
+        form.addEventListener("submit", function(event){
+            
+            let isvalid = validateusername()
+            let passwordvalid = validatepassword()
+            let repassword = validaterepassword()
+
+            if(!isvalid || !passwordvalid || !repassword){
+                event.preventDefault()
+            }
+
+            
+        })
+    </script>
+</body>
+
+</html>

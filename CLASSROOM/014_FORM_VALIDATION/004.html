@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registration Form</h2>
+
+    <form id="myform" action="hello.html">
+        Gender:
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female">FeMale
+        <span id="error" style="color: red;"></span>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        let form = document.getElementById("myform")
+        let error = document.getElementById("error")
+        let gender = document.getElementsByName("gender")
+        
+        function validategender(){
+            let selected = false
+            for( let i =0; i < gender.length; i++){
+                if(gender[i].checked){
+                    selected = true
+                    break
+                } 
+            }
+            if(selected === false){
+                error.textContent = "Please select gender"
+                return false
+            }
+            else{
+                error.textContent =  ""
+                return true
+            }
+        }
+
+    form.addEventListener("submit", function(event){
+        let result = validategender()
+        if(result === false){
+            event.preventDefault()
+        }
+    })
+
+
+    </script>
+</body>
+</html>
