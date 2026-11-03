@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Who is deepika padukone ?</p>
+    <form>
+        <input type="radio" name="deepika" id="d1" value="actress">
+        <label for="d1">Actress</label>
+        <input type="radio" name="deepika" id="d2" value="Student">
+        <label for="d2">Student</label>
+        <input type="radio" name="deepika" id="d3" value="singer">
+        <label for="d3">singer</label>
+    </form>
+
+    <p>Who is virat kohli ?</p>
+    <form>
+        <input type="radio" name="virat" id="v1" value="actor">
+        <label for="v1">Actor</label>
+        <input type="radio" name="virat" id="v2" value="Student">
+        <label for="v2">Student</label>
+        <input type="radio" name="virat" id="v3" value="player">
+        <label for="v3">player</label>
+    </form>
+    <button type="submit" onclick="total()">ToTal</button>
+    <label id="result">Result Will be here</label>
+
+    <script>
+        function total(){
+            alert("calculating result")
+            let sum = 0
+            var ans1 = document.getElementsByName("deepika")
+            for( let i=0; i<ans1.length; i++){
+                if(ans1[i].checked && ans1[i].value == "actress"){
+                    sum = sum + 1
+                }
+            }
+            document.getElementById("result").innerHTML = sum
+
+
+            var ans1 = document.getElementsByName("virat")
+            for( let i=0; i<ans1.length; i++){
+                if(ans1[i].checked && ans1[i].value == "player"){
+                    sum = sum + 1
+                }
+            }
+            document.getElementById("result").innerHTML = sum
+        }
+
+    </script>
+</body>
+</html>

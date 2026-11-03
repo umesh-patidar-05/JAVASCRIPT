@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form action="hello.html" id="myform">
+        <input type="checkbox" name="terms" id="terms" value="accepted"> I accept Terms & Conditions
+        <br>
+        <span id="error"></span>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        let form = document.getElementById("myform")
+        let error = document.getElementById("error")
+        let terms = document.getElementById("terms")
+
+        function validateterms(){
+        
+            if(error.textContent === ""){
+
+                error.textContent = "please accept terms and conditions"
+                return false
+            }
+            else {
+                error.textContent = ""
+                return true
+            }
+        }
+
+        form.addEventListener("click", function(event){
+            let validate = validateterms()
+            if (validate == false){
+                event.preventDefault()
+            }
+        })
+    </script>
+</body>
+</html>

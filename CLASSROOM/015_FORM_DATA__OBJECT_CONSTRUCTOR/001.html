@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>City Selection Form</h2>
+    <form action="hello.html" id="myform">
+        Select city:
+        <select name="city" id="city">
+            <option value="">Select city</option>
+            <option value="indore">Indore</option>
+            <option value="bhopal">Bhopal</option>
+            <option value="pune">Pune</option>
+        </select>
+        <span id="error"></span>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        let form = document.getElementById("myform")
+        let error = document.getElementById("error")
+        let city = document.getElementById("city")
+
+        function validatecity(){
+            if (city.value === "") {
+                error.textContent = "please select city"
+                return false
+            }
+            else{
+                error.textContent = ""
+                return true
+            }
+        }
+
+        form.addEventListener("click", function(event){
+            let result = validatecity()
+            if (result == false){
+                event.preventDefault()
+            }
+
+        })
+    </script>
+</body>
+</html>

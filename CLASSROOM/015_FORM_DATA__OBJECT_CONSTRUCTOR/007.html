@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Java Script Objects</h1>
+
+    <script>
+        function person(id, phone, age){
+            this.personid = id
+            this.personphone = phone
+            this.personage = age
+
+            this.display = function(){
+                return this.personid+" : "+this.personage
+            }
+        }
+
+        let p1 = new person(101, 787878, 30)
+        console.log(p1)
+        console.log(p1.display())
+    </script>
+</body>
+</html>
+
+
+
+<!-- 
+person {personid: 101, personphone: 787878, personage: 30, 
+    display: ƒ}display: ƒ ()
+    personage: 30
+    personid: 101
+    personphone: 787878
+    [[Prototype]]: Object
+ 101 : 30 
+ -->

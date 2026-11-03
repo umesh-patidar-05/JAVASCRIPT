@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Object destructuring</h1>
+
+    <script>
+        // let myarray = [22,45]
+        // // let x = myarray[0]
+        // // let y = myarray[1]
+        // // console.log(x)  // 22
+        // // console.log(y)  // 45
+
+        // let[x,y] = myarray
+        // console.log(x) // 22
+        // console.log(y)  // 45
+ 
+
+
+        // let myarray = [22,45, 34,54,45,5,76,67]
+        // let[x,y, ...a] = myarray
+        // console.log(x) // 22
+        // console.log(y)  // 45
+        // console.log(a)  // (6) [34, 54, 45, 5, 76, 67]
+
+
+
+
+
+
+
+        let obj = {
+            name:"deepika",
+            address:"chennai"
+        }
+
+        let{name, address} = obj
+        console.log(name)  // deepika
+        console.log(address)  // chennai
+
+
+    </script>
+</body>
+</html>

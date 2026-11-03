@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Java Script Object</h1>
+
+    <script>
+        class student{
+            constructor(name, address){
+                this.name = name
+                this.address = address
+                console.log("object created successfully")
+            }
+            
+            showdetails(){
+                console.log("Name is ", this.name)
+                console.log("Address is ", this.address)
+            }
+        }
+
+        let s1 = new student("umesh", "neemuch")
+        s1.showdetails()
+    </script>
+</body>
+</html>
+
+
+
+<!-- object created successfully
+Name is  umesh
+Address is  neemuch -->

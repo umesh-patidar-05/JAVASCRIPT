@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name:"deepika",
+            address:"chennai",
+            display:function(){
+                console.log("this is display function")
+                console.log("Name inside display", this.name)
+                console.log("Address inside display is ",this.address)
+            }
+        }
+        console.log(obj)
+        console.log(obj.name)
+        obj.display()
+        obj['email'] = "dipu@gmail.com"
+        console.log(obj)
+
+        delete obj["address"]
+        console.log(obj)
+
+</script>
+</body>
+</html>
+
+
+
+<!-- {name: 'deepika', address: 'chennai', display: ƒ}
+ deepika
+ this is display function
+ Name inside display deepika
+ Address inside display is  chennai
+ 
+{name: 'deepika', address: 'chennai', email: 'dipu@gmail.com', display: ƒ}
+
+{name: 'deepika', email: 'dipu@gmail.com', display: ƒ} -->
