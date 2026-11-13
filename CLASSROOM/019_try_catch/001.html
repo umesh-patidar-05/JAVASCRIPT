@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("code started")
+        function getStudent(){
+            return new Promise((resolve)=> {
+                setTimeout(()=>{
+                    console.log("fetching student details....")
+                    resolve({
+                        id:101,
+                        name:"deepika",
+                        course:"python"
+                    })
+                }, 1000)
+            })
+        }
+
+        function getMarks(studentId){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    console.log("fetching student marks....")
+                    resolve(450)
+                }, 1000)
+            })
+        }
+
+        async function calculateResult(){
+            let student = await getStudent()
+            console.log("student name", student.name)
+            let marks = await getMarks(student.id)
+            console.log("Total marks", marks)
+            let percentage = (marks/500)*100
+            console.log("Percentage", percentage)
+            console.log("Result", percentage > 40?"pass":"Fail")
+        }
+
+        calculateResult()
+        console.log("next processing")
+
+        // code started
+        // next processing
+        // fetching student details....
+        // student name deepika
+        // fetching student marks....
+        // Total marks 450
+        // Percentage 90
+        // Result pass
+
+
+    </script>
+</body>
+</html>

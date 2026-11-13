@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("code started")
+
+        function checkpayment(){
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    reject("payment fail")
+                }, 1000)
+            })
+        }
+
+        async function processPayment() {
+            try{
+                let result = await checkpayment()
+                console.log(result)
+                console.log("order confirmed")
+            }            
+            catch(e)
+            {
+                console.log("Error", e)
+            }
+        }
+
+        processPayment()
+
+
+        console.log("next processing")
+
+        // code started
+        // next processing
+        // Error payment fail
+
+    </script>
+</body>
+</html>
