@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getData(){
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    let success = true
+                    if(success){
+                        resolve("data received successfully")
+                    }
+                    else{
+                        reject("unable to receive data")
+                    }
+                }, 2000)
+            })
+        }
+        getData().then(result => console.log(result)).catch(e => console.log(e)).finally(()=> console.log("execution completed"))
+
+        // data received successfully
+        // execution completed
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("code started")
+        function getdata(){
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve("data received successfully")
+                }, 2000)
+            })
+        }
+        async function displaydata() {
+            console.log("start")
+            let result = await getdata()
+            console.log(result)
+            console.log("End")
+        }
+        displaydata()
+        console.log("next processing")
+
+        // code started
+        // start
+        // next processing
+        // data received successfully
+        // End
+
+    </script>
+</body>
+</html>
