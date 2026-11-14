@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log("code started")
+
+        setTimeout(function () {
+            console.log("timer1")
+
+        }, 1000)
+
+
+        Promise.resolve().then(function () {
+            console.log("promise")
+        })
+
+
+
+        console.log("next processing")
+
+        //  code started
+        //  next processing
+        //  promise
+        //  timer1
+
+  
+    </script>
+</body>
+
+</html>
